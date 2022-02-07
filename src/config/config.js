@@ -2,14 +2,15 @@ require("dotenv").config();
 
 const config = {
   env: process.env.NODE_ENV || "dev",
-  isProd: process.env.NODE_ENV === 'production',
+  isProd: process.env.NODE_ENV === "production",
   port: process.env.PORT || 3001,
-//   dbUser: process.env.DB_USER,
-//   dbHost: process.env.DB_HOST,
-//   dbName: process.env.DB_NAME,
-//   dbPort: process.env.DB_PORT,
-//   dbPassword: process.env.DB_PASSWORD,
-//   dbUrl:process.env.DATABASE_URL,
+  //   dbUser: process.env.DB_USER,
+  //   dbHost: process.env.DB_HOST,
+  //   dbName: process.env.DB_NAME,
+  //   dbPort: process.env.DB_PORT,
+  //   dbPassword: process.env.DB_PASSWORD,
+  //   dbUrl:process.env.DATABASE_URL,
+  googleCredentials: process.env.GOOGLE_APPLICATION_CREDENTIALS,
 };
 
 module.exports = {
