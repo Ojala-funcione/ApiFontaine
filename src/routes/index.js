@@ -1,10 +1,13 @@
-const { Router } = require('express');
-const { db } = require("..//db//db");
-
+const { Router } = require("express");
+const usersRouters = require("./userRoutes");
+const permissionsRouters = require("./permissionsRoutes");
 const router = Router();
 
+router.use("/", usersRouters);
+router.use("/", permissionsRouters);
+
 //prueba
-router.get("/contacts", async (req, res, next) => {
+/* router.get("/contacts", async (req, res, next) => {
     try {
         const querySnapshot = await db.collection("users").get();
         const users = querySnapshot.docs.map(doc => ({
@@ -82,7 +85,7 @@ router.post("/update-contact", async (req, res, next) => {
 })
 
 
-/* router.get ("/users-search", async (req, res, next) => {
+ router.get ("/users-search", async (req, res, next) => {
 try {
     
     const { name } = req.query;
@@ -98,7 +101,7 @@ try {
     
 }
     
-}) */
+}) 
 
 router.get ("/users-search", async (req, res, next) => {
 
@@ -119,11 +122,6 @@ router.get ("/users-search", async (req, res, next) => {
         
     }
 
-})
-
-
-
-
-
+}) */
 
 module.exports = router;

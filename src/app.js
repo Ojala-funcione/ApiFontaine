@@ -26,10 +26,8 @@ app.use(cors(options));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json({ limit: "50mb" }));
 app.use(morgan("dev"));
+
 app.use("/api", routes);
-
-
-
 
 // // Error handler*/
 app.use(logErrors);
