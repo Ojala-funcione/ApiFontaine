@@ -2,11 +2,13 @@ const { Router } = require("express");
 const usersRouters = require("./userRoutes");
 const permissionsRouters = require("./permissionsRoutes");
 const productsRouters = require("./productsRouters");
+const categoryRouters = require("./categoryRoutes");
 const router = Router();
 
 router.use("/", usersRouters);
 router.use("/", permissionsRouters);
 router.use("/", productsRouters);
+router.use("/", categoryRouters);
 //prueba
 /* router.get("/contacts", async (req, res, next) => {
     try {
