@@ -1,7 +1,6 @@
 const axios = require("axios");
 const { db } = require("../db/db");
 
-
 /* ------------ OBTENER TODOS LOS USUARIOS QUE SEAN CUSTOMERS ------------ */
 
 const getAllCustomers = async (req, res, next) => {
@@ -89,4 +88,40 @@ const findUser = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { getAllCustomers, getAllAdmins, getAllSuperAdmins, getAllShopManagers, findUser };
+const deleteUser = async (req, res, next) => {
+  try {
+    let id = req.body;
+    const erase = await db.collection("users").doc(id.id).delete();
+    res.send("Usuario borrado exitosamente");
+  } catch (error) {
+    next(error);
+  }
+};
+const updateUser = async (req, res, next) => {
+  try {
+    const { email, firstName, lastName, role, uid } = req.body;
+
+    const userRef = db.collection("users").doc(uid);
+
+    const updatedUser = await userRef.update({
+      firstName: firstName,
+      lastName: lastName,
+      role: role,
+      email: email,
+    });
+
+    res.send("Usuario modificado exitosamente");
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = {
+  getAllCustomers,
+  getAllAdmins,
+  getAllSuperAdmins,
+  getAllShopManagers,
+  findUser,
+  deleteUser,
+  updateUser,
+};
