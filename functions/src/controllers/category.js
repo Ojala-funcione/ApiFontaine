@@ -4,12 +4,13 @@ const addCategory = async (req, res, next) => {
   try {
     const category = req.body;
     console.log(category);
-    const newCategory = await db.collection("category").add(category);
+    await db.collection("category").add(category);
     res.json("Categoria añadida correctamente");
   } catch (error) {
     next(error);
   }
 };
+
 const allCategories = async (req, res, next) => {
   try {
     const categoriesRef = await db.collection("category").get();
@@ -22,4 +23,4 @@ const allCategories = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { addCategory, allCategories };
+module.exports = {addCategory, allCategories};
