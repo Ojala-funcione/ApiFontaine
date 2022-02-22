@@ -10,6 +10,7 @@ router.use("/", permissionsRouters);
 router.use("/", productsRouters);
 router.use("/", categoryRouters);
 
+
 // prueba
 /* router.get("/contacts", async (req, res, next) => {
     try {

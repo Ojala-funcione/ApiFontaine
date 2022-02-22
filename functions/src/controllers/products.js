@@ -1,4 +1,3 @@
-// const axios = require("axios");
 const {db} = require("../db/db");
 
 const createProduct = async (req, res, next) => {
