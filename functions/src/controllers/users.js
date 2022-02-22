@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { db } = require("../db/db");
+const {db} = require("../db/db");
 
 /* ------------ OBTENER TODOS LOS USUARIOS QUE SEAN CUSTOMERS ------------ */
 
