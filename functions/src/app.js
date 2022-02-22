@@ -1,16 +1,15 @@
-require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const routes = require("./routes/index");
 const cors = require("cors");
-
-const {logErrors, errorHandler} = require("./middlewares/errorHandler");
-
+// const {logErrors} = require("./middlewares/errorHandler");
 const app = express();
 
-app.name = "API";
-
-const whitelist = ["http://localhost:3000"];
+const whitelist = [
+  "http://localhost:3000",
+  "https://admin.ojalafuncione.com",
+  "https://ojalafuncione.com",
+];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
@@ -33,8 +32,8 @@ app.get("/", (req, res, next) => {
   res.send("Hola Funciona app");
 });
 
-// // Error handler*/
-app.use(logErrors);
-app.use(errorHandler);
+// Error handler
+// app.use(logErrors);
+// app.use(errorHandler);
 
 module.exports = app;
