@@ -1,5 +1,5 @@
-const axios = require("axios");
-const { db } = require("../db/db");
+// const axios = require("axios");
+const {db} = require("../db/db");
 
 /* ------------ OBTENER TODOS LOS USUARIOS QUE SEAN CUSTOMERS ------------ */
 
@@ -73,12 +73,12 @@ const getAllShopManagers = async (req, res, next) => {
 
 const findUser = async (req, res, next) => {
   try {
-    const { search, searchType } = req.body;
+    const {search, searchType} = req.body;
 
     const querySnapshot = await db
-      .collection("users")
-      .where(searchType, "==", search)
-      .get();
+        .collection("users")
+        .where(searchType, "==", search)
+        .get();
     const users = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -90,8 +90,8 @@ const findUser = async (req, res, next) => {
 };
 const deleteUser = async (req, res, next) => {
   try {
-    let id = req.body;
-    const erase = await db.collection("users").doc(id.id).delete();
+    const id = req.body;
+    await db.collection("users").doc(id.id).delete();
     res.send("Usuario borrado exitosamente");
   } catch (error) {
     next(error);
@@ -99,11 +99,11 @@ const deleteUser = async (req, res, next) => {
 };
 const updateUser = async (req, res, next) => {
   try {
-    const { email, firstName, lastName, role, uid } = req.body;
+    const {email, firstName, lastName, role, uid} = req.body;
 
     const userRef = db.collection("users").doc(uid);
 
-    const updatedUser = await userRef.update({
+    await userRef.update({
       firstName: firstName,
       lastName: lastName,
       role: role,

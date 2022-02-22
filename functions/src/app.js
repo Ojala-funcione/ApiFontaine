@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const routes = require("./routes/index");
 const cors = require("cors");
 
-const { logErrors, errorHandler } = require("./middlewares/errorHandler");
+const {logErrors, errorHandler} = require("./middlewares/errorHandler");
 
 const app = express();
 
@@ -23,11 +23,15 @@ const options = {
 
 app.use(cors(options));
 
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({extended: true, limit: "50mb"}));
+app.use(express.json({limit: "50mb"}));
 app.use(morgan("dev"));
 
 app.use("/api", routes);
+
+app.get("/", (req, res, next) => {
+  res.send("Hola Funciona app");
+});
 
 // // Error handler*/
 app.use(logErrors);

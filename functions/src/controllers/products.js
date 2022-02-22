@@ -1,5 +1,5 @@
-const axios = require("axios");
-const { db } = require("../db/db");
+// const axios = require("axios");
+const {db} = require("../db/db");
 
 const createProduct = async (req, res, next) => {
   try {
@@ -70,11 +70,10 @@ const updateProduct = async (req, res, next) => {
 
     const productRef = db.collection("products").doc(id);
 
-    const updatedProd = await productRef.update({
+    await productRef.update({
       name: name,
       price: price,
       description: description,
-      price: price,
       category: category,
       image: image,
       gallery: gallery,
@@ -93,9 +92,9 @@ const updateProduct = async (req, res, next) => {
 
 const deleteProduct = async (req, res, next) => {
   try {
-    let id = req.body;
+    const id = req.body;
     console.log("this is the id: ", id);
-    const erase = await db.collection("products").doc(id.id).delete();
+    await db.collection("products").doc(id.id).delete();
     res.send("Producto borrado exitosamente");
   } catch (error) {
     next(error);

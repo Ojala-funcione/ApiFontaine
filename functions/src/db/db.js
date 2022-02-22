@@ -2,12 +2,12 @@ require("dotenv").config();
 const {
   initializeApp,
   applicationDefault,
-  cert,
+  // cert,
 } = require("firebase-admin/app");
 const {
   getFirestore,
-  Timestamp,
-  FieldValue,
+  // Timestamp,
+  // FieldValue,
 } = require("firebase-admin/firestore");
 
 initializeApp({
@@ -15,6 +15,6 @@ initializeApp({
   projectId: "fontaine-dev",
 });
 const db = getFirestore();
-db.settings({ ignoreUndefinedProperties: true });
+db.settings({ignoreUndefinedProperties: true});
 
-module.exports = { db };
+module.exports = {db};

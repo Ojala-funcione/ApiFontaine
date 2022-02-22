@@ -1,6 +1,9 @@
-const { Router } = require("express");
+const {Router} = require("express");
 
-const {getAllPermissions, getPermissionsByType} = require("../controllers/permissions");
+const {
+  getAllPermissions,
+  getPermissionsByType,
+} = require("../controllers/permissions");
 
 const router = Router();
 
