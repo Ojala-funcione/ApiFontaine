@@ -6,7 +6,8 @@ module.exports = {
   },
   extends: ["eslint:recommended", "google"],
   rules: {
-    quotes: ["error", "double"],
+    "quotes": ["error", "double"],
     "linebreak-style": ["error", "windows"],
+    "new-cap": ["error", {capIsNewExceptions: ["Router"]}],
   },
 };
