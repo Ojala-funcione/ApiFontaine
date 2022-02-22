@@ -1,18 +1,19 @@
 // const axios = require("axios");
-const {db} = require("../db/db");
+const { db } = require("../db/db");
 
 /* ------------ OBTENER TODOS LOS USUARIOS QUE SEAN CUSTOMERS ------------ */
 
 const getAllCustomers = async (req, res, next) => {
   try {
     const customersRef = db.collection("users");
-    const info = await customersRef.where("rol", "==", "customers").get();
+    const info = await customersRef.where("role", "==", "customer").get();
+
     const customers = info.docs.map((c) => ({
       id: c.id,
       ...c.data(),
     }));
 
-    res.status(200).json(customers ? customers : "Nothing to show");
+    res.status(200).json(customers);
   } catch (error) {
     next(error);
   }
@@ -73,12 +74,12 @@ const getAllShopManagers = async (req, res, next) => {
 
 const findUser = async (req, res, next) => {
   try {
-    const {search, searchType} = req.body;
+    const { search, searchType } = req.body;
 
     const querySnapshot = await db
-        .collection("users")
-        .where(searchType, "==", search)
-        .get();
+      .collection("users")
+      .where(searchType, "==", search)
+      .get();
     const users = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -99,7 +100,7 @@ const deleteUser = async (req, res, next) => {
 };
 const updateUser = async (req, res, next) => {
   try {
-    const {email, firstName, lastName, role, uid} = req.body;
+    const { email, firstName, lastName, role, uid } = req.body;
 
     const userRef = db.collection("users").doc(uid);
 
