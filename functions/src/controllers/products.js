@@ -12,8 +12,9 @@ const createProduct = async (req, res, next) => {
       discountinpercent,
       stock,
       sku,
-      saleprice,
       barcode,
+      brand,
+      minstock,
     } = req.body;
 
     const newProduct = {
@@ -26,8 +27,9 @@ const createProduct = async (req, res, next) => {
       discountinpercent,
       stock,
       sku,
-      saleprice,
       barcode,
+      brand,
+      minstock,
     };
 
     await db.collection("products").add(newProduct);
